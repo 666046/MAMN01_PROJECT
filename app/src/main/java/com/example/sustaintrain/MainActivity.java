@@ -9,6 +9,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     private Button button;
     private Button button2;
+    private Button mapButton;
 
 
     @Override
@@ -29,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
                 openStatistics();
             }
         });
+        mapButton = (Button) findViewById(R.id.button);
+        mapButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openMap();
+            }
+        });
 
     }
 
@@ -41,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Statistics.class);
         startActivity(intent);
     }
+
+
+    public void openMap(){
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
+
 
 }
 
