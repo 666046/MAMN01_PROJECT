@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/button"
         style="@style/Widget.AppCompat.Button.Colored"
@@ -65,15 +50,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="377dp"
-        android:layout_height="442dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
         android:layout_marginTop="70dp"
         android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/splash" />
+        app:srcCompat="@drawable/splash"
+        tools:layout_editor_absoluteX="16dp" />
 
 </android.support.constraint.ConstraintLayout>
