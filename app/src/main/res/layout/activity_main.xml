@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <Button
@@ -13,7 +14,7 @@
         android:layout_height="65dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/image_rounded_corner"
+        android:background="@drawable/button_rounded_corner"
         android:text="Save The World"
         android:textColor="@android:color/white"
         android:textSize="30sp"
