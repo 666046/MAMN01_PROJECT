@@ -1,5 +1,6 @@
 package com.example.sustaintrain;
 
+        import android.content.Intent;
         import android.support.v7.app.AlertDialog;
         import android.support.v7.app.AppCompatActivity;
         import android.content.DialogInterface;
@@ -9,6 +10,8 @@ package com.example.sustaintrain;
         import android.hardware.SensorManager;
         import android.media.MediaPlayer;
         import android.os.Bundle;
+        import android.view.View;
+        import android.widget.ImageButton;
         import android.widget.ImageView;
         import android.widget.TextView;
 
@@ -26,6 +29,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
     private float[] mLastMagnetometer = new float[3];
     private boolean mLastAccelerometerSet = false;
     private boolean mLastMagnetometerSet = false;
+    private ImageButton button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,20 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
         txt_compass = (TextView) findViewById(R.id.txt_azimuth);
 
         start();
+
+        button = (ImageButton) findViewById(R.id.button4);
+
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openHome();
+            }
+        });
+    }
+
+    public void openHome(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
