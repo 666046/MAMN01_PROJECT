@@ -13,6 +13,7 @@ package com.example.sustaintrain;
         import android.view.View;
         import android.widget.ImageButton;
         import android.widget.ImageView;
+        import android.widget.ProgressBar;
         import android.widget.TextView;
 
 public class Statistics extends AppCompatActivity implements SensorEventListener {
@@ -30,6 +31,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
     private boolean mLastAccelerometerSet = false;
     private boolean mLastMagnetometerSet = false;
     private ImageButton button;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,8 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         compass_img = (ImageView) findViewById(R.id.pie_menu);
         txt_compass = (TextView) findViewById(R.id.txt_azimuth);
+        progressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
+
 
         start();
 
@@ -80,13 +84,16 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
         mAzimuth = Math.round(mAzimuth);
         compass_img.setRotation(-mAzimuth);
 
+
+
+
         String where = "Rotate to pick a setting";
 
-        if (mAzimuth >= 1  || mAzimuth <= 120)
+        if (mAzimuth >= 1  && mAzimuth <= 120)
             where = "Trash stats";
-        if(mAzimuth >= 121 || mAzimuth <= 240)
+        if(mAzimuth >= 121 && mAzimuth <= 240)
             where = "High score";
-        if(mAzimuth >= 241 || mAzimuth <= 360)
+        if(mAzimuth >= 241 && mAzimuth <= 360)
             where = "Health stats";
 
 
