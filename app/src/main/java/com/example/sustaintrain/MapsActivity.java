@@ -1,7 +1,10 @@
 package com.example.sustaintrain;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.LightingColorFilter;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.sustaintrain.directionhelpers.FetchURL;
@@ -32,39 +37,52 @@ import com.google.android.gms.tasks.Task;
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, TaskLoadedCallback {
     private GoogleMap mMap;
     private MarkerOptions place1, place2, place3, currentPosition;
-    private Button route1, route2, route3;
+    private RadioButton route1, route2, route3;
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CODE = 101;
     private Polyline currentPolyline;
     private Location currentLocation;
+    private Button pickRoute;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_activity);
         currentPosition = new MarkerOptions().position(new LatLng(55.711102, 13.210311)).title("Current Location");
-        route1 = findViewById(R.id.btnRoute1);
-        route1.setOnClickListener(new View.OnClickListener() {
+        route1 = (RadioButton) findViewById(R.id.btnRoute1);
+        route2 =(RadioButton) findViewById(R.id.btnRoute2);
+        route3= (RadioButton) findViewById(R.id.btnRoute3);
+        pickRoute= (Button) findViewById(R.id.pickRoute);
+
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.RGroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
             @Override
-            public void onClick(View view) {
-                new FetchURL(MapsActivity.this).execute(getUrl(currentPosition.getPosition(), place1.getPosition(), "walking"), "walking");
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.btnRoute1) {
+                    new FetchURL(MapsActivity.this).execute(getUrl(currentPosition.getPosition(), place1.getPosition(), "walking"), "walking");
+
+                }
+                else if(checkedId == R.id.btnRoute2){
+                    new FetchURL(MapsActivity.this).execute(getUrl(currentPosition.getPosition(), place2.getPosition(), "walking"), "walking");
+                }
+                else if(checkedId == R.id.btnRoute3){
+                    new FetchURL(MapsActivity.this).execute(getUrl(currentPosition.getPosition(), place3.getPosition(), "walking"), "walking");
+                }
+
+            }
+
+        });
+
+        pickRoute.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openRoute();
             }
         });
 
-        route2 = findViewById(R.id.btnRoute2);
-        route2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new FetchURL(MapsActivity.this).execute(getUrl(currentPosition.getPosition(), place2.getPosition(), "walking"), "walking");
-            }
-        });
-        route3 = findViewById(R.id.btnRoute3);
-        route3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new FetchURL(MapsActivity.this).execute(getUrl(currentPosition.getPosition(), place3.getPosition(), "walking"), "walking");
-            }
-        });
+
 
         //27.658143,85.3199503
         //27.667491,85.3208583
@@ -140,4 +158,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             currentPolyline.remove();
         currentPolyline = mMap.addPolyline((PolylineOptions) values[0]);
     }
+
+
+    public void openRoute(){
+        Intent intent = new Intent(this, StepCounter.class);
+        startActivity(intent);
+    }
+
+
+
 }

@@ -12,23 +12,47 @@
         android:layout_below="@+id/rvToolbar"
         android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/btnRoute1"
-        android:text="Route 1"
+    <RadioGroup
+        android:id="@+id/RGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground" />
+        android:buttonTint="@color/Green">
+
+
+        <RadioButton
+            android:id="@+id/btnRoute1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:text="Route 1"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/btnRoute2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:text="Route 2 "
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/btnRoute3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:text="Route 3"
+            android:textSize="18sp" />
+    </RadioGroup>
 
     <Button
-        android:id="@+id/btnRoute2"
-        android:text="Route 2"
+        android:id="@+id/pickRoute"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground" />
-    <Button
-        android:id="@+id/btnRoute3"
-        android:text="Route 3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground" />
+        android:background="?attr/selectableItemBackground"
+        android:lineSpacingExtra="8sp"
+        android:text="Pick Route"
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="monospace" />
 </LinearLayout>
