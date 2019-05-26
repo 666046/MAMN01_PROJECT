@@ -1,6 +1,8 @@
 package com.example.sustaintrain;
 
         import android.content.Intent;
+        import android.os.CountDownTimer;
+        import android.os.Handler;
         import android.support.v7.app.AlertDialog;
         import android.support.v7.app.AppCompatActivity;
         import android.content.DialogInterface;
@@ -32,6 +34,10 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
     private boolean mLastMagnetometerSet = false;
     private ImageButton button;
     private ProgressBar progressBar;
+    private int currentProgress;
+    private Handler handler;
+    private CountDownTimer countdown;
+    private int counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +47,28 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         compass_img = (ImageView) findViewById(R.id.pie_menu);
         txt_compass = (TextView) findViewById(R.id.txt_azimuth);
-        progressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        Handler handler = new Handler();
+        currentProgress = 0;
+        counter = 0;
+
+        /*countdown = new CountDownTimer(6000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+                    currentProgress += 20;
+                    progressBar.setProgress(currentProgress);
+
+
+            }
+
+            @Override
+            public void onFinish() {
+                txt_compass.setText("Done!");
+
+
+            }
+        }.start();*/
 
 
         start();
@@ -89,12 +116,24 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
 
         String where = "Rotate to pick a setting";
 
-        if (mAzimuth >= 1  && mAzimuth <= 120)
-            where = "Trash stats";
-        if(mAzimuth >= 121 && mAzimuth <= 240)
+
+
+        if (mAzimuth >= 1  && mAzimuth <= 120) {
+            counter++;
+            where = "Trash stats" + counter;
+
+
+        }
+        if(mAzimuth >= 121 && mAzimuth <= 240) {
             where = "High score";
-        if(mAzimuth >= 241 && mAzimuth <= 360)
+
+
+            }
+
+        if(mAzimuth >= 241 && mAzimuth <= 360) {
             where = "Health stats";
+         }
+
 
 
         txt_compass.setText(where);
