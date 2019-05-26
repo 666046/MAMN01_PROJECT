@@ -22,37 +22,37 @@
         <RadioButton
             android:id="@+id/btnRoute1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:text="Route 1"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/btnRoute2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:text="Route 2 "
+            android:layout_height="42dp"
+            android:background="@drawable/border"
+            android:text="Route 1: Studiecentrum, 40 m "
             android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/btnRoute3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:text="Route 3"
+            android:layout_height="42dp"
+            android:background="@drawable/border"
+            android:text="Route 2: John Ericssons väg, 60 m"
             android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/btnRoute2"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:background="@drawable/border"
+            android:text="Route 3: Grönt o' Gott, 170 m"
+            android:textSize="18sp" />
+
     </RadioGroup>
 
     <Button
         android:id="@+id/pickRoute"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
+        android:layout_height="50dp"
+        android:background="@color/Green"
         android:lineSpacingExtra="8sp"
         android:text="Pick Route"
         android:textAllCaps="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="24sp"
         android:typeface="monospace" />
 </LinearLayout>

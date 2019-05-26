@@ -65,15 +65,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 }
                 else if(checkedId == R.id.btnRoute2){
-                    new FetchURL(MapsActivity.this).execute(getUrl(currentPosition.getPosition(), place2.getPosition(), "walking"), "walking");
+                    new FetchURL(MapsActivity.this).execute(getUrl(currentPosition.getPosition(), place3.getPosition(), "walking"), "walking");
                 }
                 else if(checkedId == R.id.btnRoute3){
-                    new FetchURL(MapsActivity.this).execute(getUrl(currentPosition.getPosition(), place3.getPosition(), "walking"), "walking");
+                    new FetchURL(MapsActivity.this).execute(getUrl(currentPosition.getPosition(), place2.getPosition(), "walking"), "walking");
                 }
 
             }
 
-        });
+        }); 
 
         pickRoute.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -87,9 +87,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         //27.658143,85.3199503
         //27.667491,85.3208583
 
-        place1 = new MarkerOptions().position(new LatLng(55.710982, 13.208511)).title("Location 1");
-        place2 = new MarkerOptions().position(new LatLng(55.711804, 13.210109)).title("Location 2");
-        place3 = new MarkerOptions().position(new LatLng(55.709957, 13.208661)).title("Location 3");
+        place1 = new MarkerOptions().position(new LatLng(55.710982, 13.208511)).title("Studie Centrum");
+        place2 = new MarkerOptions().position(new LatLng(55.711804, 13.210109)).title("John Ericssons väg");
+        place3 = new MarkerOptions().position(new LatLng(55.709957, 13.208661)).title("Grönt o' Gott");
 
 
 
