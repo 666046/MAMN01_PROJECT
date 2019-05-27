@@ -70,10 +70,13 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
             public void onFinish() {
                 progressBar.setProgress(100);
                 Intent intent = new Intent(Statistics.this, Garbage.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 //startActivityForResult(new Intent(Statistics.this, Garbage.class))
-                //timerStarted = false;
-                finish();
+                timerStartedGarbage = false;
+                //finish();
                 cancel();
             }
         };
@@ -93,9 +96,12 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 Intent intent = new Intent(Statistics.this, Walking.class);
                 int steps = getIntent().getExtras().getInt("steps");
                 intent.putExtra("steps",steps);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-                //timerStarted = false;
-                finish();
+                timerStartedWalking = false;
+                //finish();
                 cancel();
             }
         };
@@ -114,9 +120,12 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
 
                 progressBar.setProgress(100);
                 Intent intent = new Intent(Statistics.this, Trophy.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-                //timerStarted = false;
-                finish();
+                timerStartedTrophy = false;
+                //finish();
                 cancel();
             }
         };
