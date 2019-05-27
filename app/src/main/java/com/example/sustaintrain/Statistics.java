@@ -49,12 +49,12 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
         compass_img = (ImageView) findViewById(R.id.pie_menu);
         txt_compass = (TextView) findViewById(R.id.txt_azimuth);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setScaleY(3f);
 
         //COUNTER/PROGRESSBAR
         timerStartedGarbage = false;
         timerStartedWalking = false;
         timerStartedTrophy = false;
-        checkState = 0;
 
 
         countDownGarbage = new CountDownTimer(5000,1000){
@@ -210,8 +210,12 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
 
                 if(timerStartedTrophy){
                     countDownTrophy.cancel();
+                    timerStartedTrophy = false;
+                    counter = 0;
                 }else if(timerStartedWalking){
                     countDownWalking.cancel();
+                    timerStartedWalking = false;
+                    counter = 0;
                 }
 
                 countDownGarbage.start();
@@ -229,8 +233,12 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
 
                 if(timerStartedGarbage){
                     countDownGarbage.cancel();
+                    timerStartedGarbage = false;
+                    counter = 0;
                 }else if(timerStartedWalking){
                     countDownWalking.cancel();
+                    timerStartedWalking = false;
+                    counter = 0;
                 }
 
                 countDownTrophy.start();
@@ -248,8 +256,12 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
 
                 if(timerStartedTrophy){
                     countDownTrophy.cancel();
+                    timerStartedWalking = false;
+                    counter = 0;
                 }else if(timerStartedGarbage){
                     countDownGarbage.cancel();
+                    timerStartedGarbage = false;
+                    counter = 0;
                 }
 
                 countDownWalking.start();
