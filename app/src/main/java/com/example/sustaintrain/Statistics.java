@@ -70,6 +70,8 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
             public void onFinish() {
                 progressBar.setProgress(100);
                 Intent intent = new Intent(Statistics.this, Garbage.class);
+                int trash = getIntent().getExtras().getInt("trash");
+                intent.putExtra("trash",trash);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
