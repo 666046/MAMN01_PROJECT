@@ -20,7 +20,7 @@ public class Walking extends AppCompatActivity {
 
         steps = getIntent().getExtras().getInt("steps");
         TextView textView = (TextView) findViewById(R.id.textView3);
-        textView.setText(steps);
+        textView.setText(String.valueOf(steps));
 
 
         button = (ImageButton) findViewById(R.id.button4);
