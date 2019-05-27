@@ -51,7 +51,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
         compass_img = (ImageView) findViewById(R.id.pie_menu);
         txt_compass = (TextView) findViewById(R.id.txt_azimuth);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        progressBar.setScaleY(3f);
+        progressBar.setScaleY(2f);
 
         //COUNTER/PROGRESSBAR
         timerStartedGarbage = false;
@@ -82,6 +82,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 //timerStartedGarbage = false;
                 //Statistics.this.finish();
                 counter= counter +2;
+                onPause();
                 cancel();
             }
         };
@@ -109,6 +110,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 startActivity(intent);
                 //timerStartedWalking = false;
                 //Statistics.this.finish();
+                onPause();
                 counter= counter +2;
                 cancel();
             }
@@ -134,6 +136,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 startActivity(intent);
                 //timerStartedTrophy = false;
                 //Statistics.this.finish();
+                onPause();
                 counter= counter +2;
                 cancel();
             }
@@ -152,9 +155,17 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
     }
 
     public void openHome(){
+        if(timerStartedTrophy){
+            countDownTrophy.cancel();
+        }
+        if(timerStartedGarbage){
+            countDownGarbage.cancel();
+        }
+        if(timerStartedWalking){
+            countDownWalking.cancel();
+        }
         Intent returnBtn = new Intent(this, MainActivity.class);
         startActivity(returnBtn);
-        finish();
     }
 
 
@@ -210,9 +221,8 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 }
 
                 where = "Trash stats" + counter;
-
-
             }
+
             if (mAzimuth >= 121 && mAzimuth <= 240) {
 
                 if (!(timerStartedTrophy)) {
@@ -321,6 +331,11 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
     protected void onResume() {
         super.onResume();
         start();
+    }
+    @Override
+    public void onBackPressed(){
+        openHome();
+
     }
 
 
