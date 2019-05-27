@@ -258,7 +258,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
             }
 
 
-            txt_compass.setText(where);
+           // txt_compass.setText(where);
 
         }
 
