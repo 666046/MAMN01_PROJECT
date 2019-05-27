@@ -80,7 +80,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 startActivity(intent);
                 //startActivityForResult(new Intent(Statistics.this, Garbage.class))
                 //timerStartedGarbage = false;
-                Statistics.this.finish();
+                //Statistics.this.finish();
                 cancel();
             }
         };
@@ -107,7 +107,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 //timerStartedWalking = false;
-                Statistics.this.finish();
+                //Statistics.this.finish();
                 cancel();
             }
         };
@@ -131,30 +131,11 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 //timerStartedTrophy = false;
-                Statistics.this.finish();
+                //Statistics.this.finish();
+                counter++;
                 cancel();
             }
         };
-
-
-        /*countdown = new CountDownTimer(6000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-
-                    currentProgress += 20;
-                    progressBar.setProgress(currentProgress);
-
-
-            }
-
-            @Override
-            public void onFinish() {
-                txt_compass.setText("Done!");
-
-
-            }
-        }.start();*/
-
 
         start();
 
@@ -175,8 +156,14 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
     }
 
 
+
+
     @Override
     public void onSensorChanged(SensorEvent event) {
+        if(counter >= 6){
+            finish();
+        }
+
         if (event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR) {
             SensorManager.getRotationMatrixFromVector(rMat, event.values);
             mAzimuth = (int) (Math.toDegrees(SensorManager.getOrientation(rMat, orientation)[0]) + 360) % 360;
