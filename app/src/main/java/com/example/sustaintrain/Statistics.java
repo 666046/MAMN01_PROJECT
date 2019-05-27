@@ -91,7 +91,8 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
             public void onFinish() {
                 progressBar.setProgress(100);
                 Intent intent = new Intent(Statistics.this, Walking.class);
-                intent.putExtra("steps", getIntent().getExtras().getString("steps"));
+                int steps = getIntent().getExtras().getInt("steps");
+                intent.putExtra("steps",steps);
                 startActivity(intent);
                 //timerStarted = false;
                 finish();
