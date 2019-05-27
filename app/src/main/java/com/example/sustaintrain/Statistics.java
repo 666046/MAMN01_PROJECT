@@ -160,109 +160,105 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(counter >= 6){
-            finish();
-        }
-
-        if (event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR) {
-            SensorManager.getRotationMatrixFromVector(rMat, event.values);
-            mAzimuth = (int) (Math.toDegrees(SensorManager.getOrientation(rMat, orientation)[0]) + 360) % 360;
-        }
-
-        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            System.arraycopy(event.values, 0, mLastAccelerometer, 0, event.values.length);
-            mLastAccelerometerSet = true;
-        } else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
-            System.arraycopy(event.values, 0, mLastMagnetometer, 0, event.values.length);
-            mLastMagnetometerSet = true;
-        }
-        if (mLastAccelerometerSet && mLastMagnetometerSet) {
-            SensorManager.getRotationMatrix(rMat, null, mLastAccelerometer, mLastMagnetometer);
-            SensorManager.getOrientation(rMat, orientation);
-            mAzimuth = (int) (Math.toDegrees(SensorManager.getOrientation(rMat, orientation)[0]) + 360) % 360;
-        }
-
-        mAzimuth = Math.round(mAzimuth);
-        compass_img.setRotation(-mAzimuth);
+        if(counter < 6) {
 
 
+            if (event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR) {
+                SensorManager.getRotationMatrixFromVector(rMat, event.values);
+                mAzimuth = (int) (Math.toDegrees(SensorManager.getOrientation(rMat, orientation)[0]) + 360) % 360;
+            }
 
-        String where = "Rotate to pick a setting";
+            if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                System.arraycopy(event.values, 0, mLastAccelerometer, 0, event.values.length);
+                mLastAccelerometerSet = true;
+            } else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+                System.arraycopy(event.values, 0, mLastMagnetometer, 0, event.values.length);
+                mLastMagnetometerSet = true;
+            }
+            if (mLastAccelerometerSet && mLastMagnetometerSet) {
+                SensorManager.getRotationMatrix(rMat, null, mLastAccelerometer, mLastMagnetometer);
+                SensorManager.getOrientation(rMat, orientation);
+                mAzimuth = (int) (Math.toDegrees(SensorManager.getOrientation(rMat, orientation)[0]) + 360) % 360;
+            }
+
+            mAzimuth = Math.round(mAzimuth);
+            compass_img.setRotation(-mAzimuth);
 
 
+            String where = "Rotate to pick a setting";
 
-        if (mAzimuth >= 1  && mAzimuth <= 120) {
 
-            if(!(timerStartedGarbage)){
+            if (mAzimuth >= 1 && mAzimuth <= 120) {
 
-                if(timerStartedTrophy){
-                    countDownTrophy.cancel();
-                    timerStartedTrophy = false;
-                    counter = 0;
-                }else if(timerStartedWalking){
-                    countDownWalking.cancel();
-                    timerStartedWalking = false;
-                    counter = 0;
+                if (!(timerStartedGarbage)) {
+
+                    if (timerStartedTrophy) {
+                        countDownTrophy.cancel();
+                        timerStartedTrophy = false;
+                        counter = 0;
+                    } else if (timerStartedWalking) {
+                        countDownWalking.cancel();
+                        timerStartedWalking = false;
+                        counter = 0;
+                    }
+
+                    countDownGarbage.start();
+                    timerStartedGarbage = true;
+
                 }
 
-                countDownGarbage.start();
-                timerStartedGarbage = true;
+                where = "Trash stats" + counter;
+
+
+            }
+            if (mAzimuth >= 121 && mAzimuth <= 240) {
+
+                if (!(timerStartedTrophy)) {
+
+                    if (timerStartedGarbage) {
+                        countDownGarbage.cancel();
+                        timerStartedGarbage = false;
+                        counter = 0;
+                    } else if (timerStartedWalking) {
+                        countDownWalking.cancel();
+                        timerStartedWalking = false;
+                        counter = 0;
+                    }
+
+                    countDownTrophy.start();
+                    timerStartedTrophy = true;
+
+                }
+                where = "High score";
+
 
             }
 
-            where = "Trash stats" + counter;
+            if (mAzimuth >= 241 && mAzimuth <= 360) {
 
+                if (!(timerStartedWalking)) {
+
+                    if (timerStartedTrophy) {
+                        countDownTrophy.cancel();
+                        timerStartedWalking = false;
+                        counter = 0;
+                    } else if (timerStartedGarbage) {
+                        countDownGarbage.cancel();
+                        timerStartedGarbage = false;
+                        counter = 0;
+                    }
+
+                    countDownWalking.start();
+                    timerStartedWalking = true;
+
+                }
+                where = "Health stats";
+            }
+
+
+            txt_compass.setText(where);
 
         }
-        if(mAzimuth >= 121 && mAzimuth <= 240) {
-
-            if(!(timerStartedTrophy)){
-
-                if(timerStartedGarbage){
-                    countDownGarbage.cancel();
-                    timerStartedGarbage = false;
-                    counter = 0;
-                }else if(timerStartedWalking){
-                    countDownWalking.cancel();
-                    timerStartedWalking = false;
-                    counter = 0;
-                }
-
-                countDownTrophy.start();
-                timerStartedTrophy = true;
-
-            }
-            where = "High score";
-
-
-            }
-
-        if(mAzimuth >= 241 && mAzimuth <= 360) {
-
-            if(!(timerStartedWalking)){
-
-                if(timerStartedTrophy){
-                    countDownTrophy.cancel();
-                    timerStartedWalking = false;
-                    counter = 0;
-                }else if(timerStartedGarbage){
-                    countDownGarbage.cancel();
-                    timerStartedGarbage = false;
-                    counter = 0;
-                }
-
-                countDownWalking.start();
-                timerStartedWalking = true;
-
-            }
-            where = "Health stats";
-         }
-
-
-
-        txt_compass.setText(where);
-
-
 
     }
 
