@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
                 openMap();
             }
         });
-        int steps = getIntent().getExtras().getInt("steps");
-        double distance = getIntent().getExtras().getDouble("distance");
-        int trash = getIntent().getExtras().getInt("trash");
+       // int steps = getIntent().getExtras().getInt("steps");
+       // double distance = getIntent().getExtras().getDouble("distance");
+       // int trash = getIntent().getExtras().getInt("trash");
 
     }
 

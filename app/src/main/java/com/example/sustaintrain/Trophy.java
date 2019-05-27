@@ -26,4 +26,9 @@ public class Trophy extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed(){
+        openHome();
+    }
 }

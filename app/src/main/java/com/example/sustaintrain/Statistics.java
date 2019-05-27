@@ -49,7 +49,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
 
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         compass_img = (ImageView) findViewById(R.id.pie_menu);
-        txt_compass = (TextView) findViewById(R.id.txt_azimuth);
+        //txt_compass = (TextView) findViewById(R.id.txt_azimuth);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setScaleY(2f);
 
@@ -268,7 +268,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
             }
 
 
-           // txt_compass.setText(where);
+           //txt_compass.setText(where);
 
         }
 
