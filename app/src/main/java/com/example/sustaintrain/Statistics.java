@@ -70,10 +70,10 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
             public void onFinish() {
                 progressBar.setProgress(100);
                 Intent intent = new Intent(Statistics.this, Garbage.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 //startActivityForResult(new Intent(Statistics.this, Garbage.class))
                 //timerStarted = false;
+                finish();
                 cancel();
             }
         };
@@ -91,9 +91,10 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
             public void onFinish() {
                 progressBar.setProgress(100);
                 Intent intent = new Intent(Statistics.this, Walking.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("steps", getIntent().getExtras().getString("steps"));
                 startActivity(intent);
                 //timerStarted = false;
+                finish();
                 cancel();
             }
         };
@@ -109,11 +110,12 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
 
             @Override
             public void onFinish() {
+
                 progressBar.setProgress(100);
                 Intent intent = new Intent(Statistics.this, Trophy.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 //timerStarted = false;
+                finish();
                 cancel();
             }
         };

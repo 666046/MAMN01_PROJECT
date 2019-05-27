@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void openStatistics(){
         Intent intent = new Intent(this, Statistics.class);
+        intent.putExtra("trash", 1);
+        intent.putExtra("steps", 2);
+        intent.putExtra("distance", 3);
         startActivity(intent);
     }
 
