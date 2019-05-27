@@ -130,7 +130,11 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
     }
 
     public void openPickRoute(){
+            double distance = steps/0.76;
             Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("steps", steps);
+            intent.putExtra("trash", pickedUp);
+            intent.putExtra("distance", distance);
             startActivity(intent);
 
     }

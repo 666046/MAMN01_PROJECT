@@ -10,7 +10,8 @@ import android.widget.TextView;
 public class Walking extends AppCompatActivity {
 
     private ImageButton button;
-    private int steps,distance;
+    private int steps;
+    private double distance;
     private TextView textView;
 
     @Override
@@ -26,7 +27,7 @@ public class Walking extends AppCompatActivity {
         TextView textView1 = (TextView) findViewById(R.id.textView3);
         textView1.setText(stepText + String.valueOf(steps));
 
-        distance = getIntent().getExtras().getInt("distance");
+        distance = getIntent().getExtras().getDouble("distance");
         TextView textView2 = (TextView) findViewById(R.id.textView4);
         textView2.setText(distanceText + String.valueOf(distance) + distanceEndText);
 

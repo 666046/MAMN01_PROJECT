@@ -100,7 +100,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 progressBar.setProgress(100);
                 Intent intent = new Intent(Statistics.this, Walking.class);
                 int steps = getIntent().getExtras().getInt("steps");
-                int distance = getIntent().getExtras().getInt("distance");
+                double distance = getIntent().getExtras().getDouble("distance");
                 intent.putExtra("steps",steps);
                 intent.putExtra("distance", distance);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
