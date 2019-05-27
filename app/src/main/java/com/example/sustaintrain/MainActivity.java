@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void openMap(){
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);

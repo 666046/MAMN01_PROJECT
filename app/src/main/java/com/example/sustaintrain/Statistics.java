@@ -1,5 +1,7 @@
 package com.example.sustaintrain;
 
+        import android.content.BroadcastReceiver;
+        import android.content.Context;
         import android.content.Intent;
         import android.os.CountDownTimer;
         import android.os.Handler;
@@ -78,7 +80,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 startActivity(intent);
                 //startActivityForResult(new Intent(Statistics.this, Garbage.class))
                 //timerStartedGarbage = false;
-                //finish();
+                Statistics.this.finish();
                 cancel();
             }
         };
@@ -105,7 +107,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 //timerStartedWalking = false;
-                //finish();
+                Statistics.this.finish();
                 cancel();
             }
         };
@@ -129,7 +131,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 //timerStartedTrophy = false;
-                //finish();
+                Statistics.this.finish();
                 cancel();
             }
         };
@@ -172,21 +174,6 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
         finish();
     }
 
-
-    /*private CountDownTimer createTimer() {
-        return new CountDownTimer(5000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                progressBar.setProgress(counter * 100 / (5000 / 1000));
-                counter = (int) millisUntilFinished / 1000;
-            }
-
-            @Override
-            public void onFinish() {
-                //Do what you want, cancel the timer...
-            }
-        }.start();
-    }*/
 
     @Override
     public void onSensorChanged(SensorEvent event) {
