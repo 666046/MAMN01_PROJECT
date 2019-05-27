@@ -35,9 +35,9 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
     private ImageButton button;
     private ProgressBar progressBar;
     private Handler handler;
-    private CountDownTimer countDown;
+    private CountDownTimer countDownGarbage, countDownWalking, countDownTrophy;
     private int counter;
-    private boolean timerStarted;
+    private boolean timerStartedGarbage, timerStartedWalking, timerStartedTrophy;
     private int checkState;
 
     @Override
@@ -51,11 +51,13 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         //COUNTER/PROGRESSBAR
-        timerStarted = false;
+        timerStartedGarbage = false;
+        timerStartedWalking = false;
+        timerStartedTrophy = false;
         checkState = 0;
 
 
-        countDown = new CountDownTimer(5000,1000){
+        countDownGarbage = new CountDownTimer(5000,1000){
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -66,14 +68,55 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
 
             @Override
             public void onFinish() {
+                progressBar.setProgress(100);
                 Intent intent = new Intent(Statistics.this, Garbage.class);
                 startActivity(intent);
+                //startActivityForResult(new Intent(Statistics.this, Garbage.class))
+                //timerStarted = false;
+                finish();
+                cancel();
+            }
+        };
+
+        countDownWalking = new CountDownTimer(5000,1000){
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                progressBar.setProgress(counter*100/(5000/1000));
+                counter++;
+
+            }
+
+            @Override
+            public void onFinish() {
                 progressBar.setProgress(100);
+                Intent intent = new Intent(Statistics.this, Walking.class);
+                startActivity(intent);
+                finish();
                 //timerStarted = false;
                 cancel();
             }
         };
 
+        countDownTrophy = new CountDownTimer(5000,1000){
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                progressBar.setProgress(counter*100/(5000/1000));
+                counter++;
+
+            }
+
+            @Override
+            public void onFinish() {
+                progressBar.setProgress(100);
+                Intent intent = new Intent(Statistics.this, Trophy.class);
+                startActivity(intent);
+                //timerStarted = false;
+                finish();
+                cancel();
+            }
+        };
 
 
         /*countdown = new CountDownTimer(6000, 1000) {
@@ -111,6 +154,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
 
     /*private CountDownTimer createTimer() {
         return new CountDownTimer(5000, 1000) {
@@ -157,13 +201,17 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
 
 
         if (mAzimuth >= 1  && mAzimuth <= 120) {
-            if(checkState != 1){
-                countDown.cancel();
-            }
-            checkState = 1;
-            if(!(timerStarted)){
-                countDown.start();
-                timerStarted = true;
+
+            if(!(timerStartedGarbage)){
+
+                if(timerStartedTrophy){
+                    countDownTrophy.cancel();
+                }else if(timerStartedWalking){
+                    countDownWalking.cancel();
+                }
+
+                countDownGarbage.start();
+                timerStartedGarbage = true;
 
             }
 
@@ -172,13 +220,17 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
 
         }
         if(mAzimuth >= 121 && mAzimuth <= 240) {
-            if(checkState != 2){
-                countDown.cancel();
-            }
-            checkState = 2;
-            if(!(timerStarted)){
-                countDown.start();
-                timerStarted = true;
+
+            if(!(timerStartedTrophy)){
+
+                if(timerStartedGarbage){
+                    countDownGarbage.cancel();
+                }else if(timerStartedWalking){
+                    countDownWalking.cancel();
+                }
+
+                countDownTrophy.start();
+                timerStartedTrophy = true;
 
             }
             where = "High score";
@@ -187,13 +239,17 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
             }
 
         if(mAzimuth >= 241 && mAzimuth <= 360) {
-            if(checkState != 3){
-                countDown.cancel();
-            }
-            checkState = 3;
-            if(!(timerStarted)){
-                countDown.start();
-                timerStarted = true;
+
+            if(!(timerStartedWalking)){
+
+                if(timerStartedTrophy){
+                    countDownTrophy.cancel();
+                }else if(timerStartedGarbage){
+                    countDownGarbage.cancel();
+                }
+
+                countDownWalking.start();
+                timerStartedWalking = true;
 
             }
             where = "Health stats";
