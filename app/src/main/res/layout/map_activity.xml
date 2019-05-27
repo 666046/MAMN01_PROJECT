@@ -49,7 +49,7 @@
         android:id="@+id/pickRoute"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/Green"
+        android:background="@drawable/button_rounded_corner"
         android:lineSpacingExtra="8sp"
         android:text="Pick Route"
         android:textAllCaps="true"
