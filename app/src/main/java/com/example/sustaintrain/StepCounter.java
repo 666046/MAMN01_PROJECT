@@ -57,6 +57,8 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
         pickedUpTrash.setText(TEXT_PICKED_TRASH + pickedUp);
         pickedUp = 0;
         valueOf = 0;
+        steps = 0;
+        
 
         finishRoute.setOnClickListener(new View.OnClickListener(){
             @Override
