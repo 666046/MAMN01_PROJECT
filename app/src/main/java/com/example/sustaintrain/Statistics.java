@@ -81,6 +81,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 //startActivityForResult(new Intent(Statistics.this, Garbage.class))
                 //timerStartedGarbage = false;
                 //Statistics.this.finish();
+                counter= counter +2;
                 cancel();
             }
         };
@@ -108,6 +109,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 startActivity(intent);
                 //timerStartedWalking = false;
                 //Statistics.this.finish();
+                counter= counter +2;
                 cancel();
             }
         };
@@ -132,7 +134,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 startActivity(intent);
                 //timerStartedTrophy = false;
                 //Statistics.this.finish();
-                counter++;
+                counter= counter +2;
                 cancel();
             }
         };
