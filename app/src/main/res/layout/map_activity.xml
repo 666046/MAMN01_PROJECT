@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:background="@drawable/border"
-            android:text="Route 1: Studiecentrum, 40 m "
+            android:text="Route 1: Studiecentrum,83 m "
             android:textSize="18sp" />
 
         <RadioButton
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:background="@drawable/border"
-            android:text="Route 2: John Ericssons väg, 60 m"
+            android:text="Route 2: John Ericssons väg, 90 m"
             android:textSize="18sp" />
 
         <RadioButton
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:background="@drawable/border"
-            android:text="Route 3: Grönt o' Gott, 170 m"
+            android:text="Route 3: Grönt o' Gott, 168 m"
             android:textSize="18sp" />
 
     </RadioGroup>
