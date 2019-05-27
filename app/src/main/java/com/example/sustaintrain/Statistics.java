@@ -75,7 +75,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 //startActivityForResult(new Intent(Statistics.this, Garbage.class))
-                timerStartedGarbage = false;
+                //timerStartedGarbage = false;
                 //finish();
                 cancel();
             }
@@ -100,7 +100,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-                timerStartedWalking = false;
+                //timerStartedWalking = false;
                 //finish();
                 cancel();
             }
@@ -124,7 +124,7 @@ public class Statistics extends AppCompatActivity implements SensorEventListener
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-                timerStartedTrophy = false;
+                //timerStartedTrophy = false;
                 //finish();
                 cancel();
             }
