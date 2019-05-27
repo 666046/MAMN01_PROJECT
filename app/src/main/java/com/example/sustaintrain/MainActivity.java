@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity {
     private Button button;
     private ImageButton button2;
     private Button mapButton;
+    private int steps, trash;
+    private double distance;
 
 
     @Override
@@ -38,8 +40,11 @@ public class MainActivity extends AppCompatActivity {
                 openMap();
             }
         });
-       // int steps = getIntent().getExtras().getInt("steps");
-       // double distance = getIntent().getExtras().getDouble("distance");
+        //steps = 0;
+        //trash = 0;
+        //distance = 0.0;
+       //steps = getIntent().getExtras().getInt("steps");
+       //double distance = getIntent().getExtras().getDouble("distance");
        // int trash = getIntent().getExtras().getInt("trash");
 
     }
@@ -51,19 +56,33 @@ public class MainActivity extends AppCompatActivity {
 
     public void openStatistics(){
         Intent intent = new Intent(this, Statistics.class);
-        intent.putExtra("trash", 1);
-        intent.putExtra("steps", 2);
-        intent.putExtra("distance", 3);
+        intent.putExtra("trash", trash);
+        intent.putExtra("steps", steps);
+        intent.putExtra("distance", distance);
         startActivity(intent);
     }
 
     public void openMap(){
         Intent intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK){
+                steps = data.getIntExtra("steps", 0);
+                trash = data.getIntExtra("trash", 0);
+                distance = data.getDoubleExtra("distance", 0.0 );
+            }
+            if (resultCode == RESULT_CANCELED) {
+                steps = 0;
+                trash = 0;
+                distance = 0.0;
+            }
+        }
+    }
 
 }
 

@@ -193,8 +193,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public void openRoute(){
         Intent intent = new Intent(this, StepCounter.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
         startActivity(intent);
+        finish();
     }
+
 
     @Override
     protected void onStart(){
