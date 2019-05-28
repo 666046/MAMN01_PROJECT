@@ -103,7 +103,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.RGroup);
 
         if(oneTime==true){
-            route2.setChecked(true);
+            route1.setChecked(true);
             oneTime=false;
         }
 
