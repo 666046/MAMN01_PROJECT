@@ -1,6 +1,7 @@
 package com.example.sustaintrain;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -58,12 +60,43 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
         pickedUp = 0;
         valueOf = 0;
         steps = 0;
+
         
 
         finishRoute.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openPickRoute();
+                AlertDialog.Builder builder = new AlertDialog.Builder(StepCounter.this);
+
+                // Set a title for alert dialog
+                builder.setTitle("Select your answer.");
+
+                // Ask the final question
+                builder.setMessage("Are you sure you want to finish your route?");
+
+                // Set the alert dialog yes button click listener
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do something when user clicked the Yes button
+                        // Set the TextView visibility GONE
+                        openPickRoute();
+                    }
+                });
+
+                // Set the alert dialog no button click listener
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do something when No button clicked
+                        Toast.makeText(getApplicationContext(),
+                                "You've selected No",Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                // Display the alert dialog on interface
+                dialog.show();
             }
         });
 
@@ -143,5 +176,8 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
 
     }
 
-}
+
+    }
+
+
 
