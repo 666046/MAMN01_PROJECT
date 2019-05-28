@@ -53,11 +53,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleApiClient googleApiClient;
     double lat1, lng1, lat2, lng2, lat3, lng3;
     double totalLat, totalLng;
+    private boolean oneTime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_activity);
+        oneTime=true;
 
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -81,7 +83,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     public void onSuccess(Location location) {
                         if (location != null) {
 
-                            currentPosition = new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title("Current Location");
+                           currentPosition = new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title("Current Location");
                         }
                     }
                 });
@@ -92,11 +94,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         route3= (RadioButton) findViewById(R.id.btnRoute3);
         pickRoute= (Button) findViewById(R.id.pickRoute);
 
+
+
         currentPosition = new MarkerOptions().position(new LatLng(55.71111, 13.210267)).title("Current Location");
 
 
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.RGroup);
+
+        if(oneTime==true){
+            route2.setChecked(true);
+            oneTime=false;
+        }
+
+
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
             @Override
@@ -118,7 +129,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
 
 
-        }); 
+        });
 
         pickRoute.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -153,7 +164,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         Log.d("mylog", "Added Markers");
-        LatLng latLng = new LatLng(55.711102, 13.210311);
+        LatLng latLng = new LatLng(55.710976, 13.209676);
         MarkerOptions markerOptions = new MarkerOptions().position(latLng)
                 .title("HERE");
         markerOptions.visible(false);
