@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
     private static final String TEXT_NUM_STEPS = "Steps: ";
     private static final String TEXT_PICKED_TRASH ="Picked up: ";
     private Button finishRoute;
+    private ImageButton help;
     private PowerManager pm;
     private MediaPlayer mp;
     private boolean isScreenOn;
@@ -45,6 +47,7 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.step_counter);
         finishRoute = (Button) findViewById(R.id.finishroute);
+        help = (ImageButton) findViewById(R.id.helpImage);
         stepcounter = (TextView) findViewById(R.id.stepCounterView);
         pickedUpTrash= (TextView) findViewById(R.id.pickedUpTrahsView);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -99,6 +102,20 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
                 dialog.show();
             }
         });
+
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog.Builder dialog = new AlertDialog.Builder(StepCounter.this);
+                dialog.setPositiveButton("OK, got it!", null);
+                LayoutInflater factory = LayoutInflater.from(StepCounter.this);
+                final View view = factory.inflate(R.layout.alert_help, null);
+                dialog.setView(view);
+                final AlertDialog alert = dialog.create();
+                alert.show();
+            }
+        });
+
 
 
 

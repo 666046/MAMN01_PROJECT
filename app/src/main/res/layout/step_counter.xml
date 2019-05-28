@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="177dp"
         android:layout_marginLeft="177dp"
-        android:layout_marginTop="312dp"
+        android:layout_marginTop="349dp"
         android:layout_marginEnd="176dp"
         android:layout_marginRight="176dp"
         android:layout_marginBottom="400dp"
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="195dp"
         android:layout_marginLeft="195dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="145dp"
         android:layout_marginEnd="196dp"
         android:layout_marginRight="196dp"
         android:layout_marginBottom="144dp"
@@ -63,5 +63,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/helpImage"
+        android:layout_width="104dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/image_rounded_corner"
+        android:scaleType="fitCenter"
+        android:src="@drawable/icon_help"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 
 </android.support.constraint.ConstraintLayout>
