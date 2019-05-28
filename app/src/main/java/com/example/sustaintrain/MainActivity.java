@@ -1,8 +1,10 @@
 package com.example.sustaintrain;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -11,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button;
     private ImageButton button2;
     private Button mapButton;
+    private ImageButton helpButton;
     private int steps, trash;
     private double distance;
 
@@ -40,6 +43,20 @@ public class MainActivity extends AppCompatActivity {
                 openMap();
             }
         });
+        helpButton = (ImageButton) findViewById(R.id.helpImage);
+        helpButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                final AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+                dialog.setPositiveButton("OK", null);
+                LayoutInflater factory = LayoutInflater.from(MainActivity.this);
+                final View view = factory.inflate(R.layout.alert_main, null);
+                dialog.setView(view);
+                final AlertDialog alert = dialog.create();
+                alert.show();
+            }
+        });
+
         //steps = 0;
         //trash = 0;
         //distance = 0.0;
