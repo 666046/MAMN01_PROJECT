@@ -92,7 +92,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         route3= (RadioButton) findViewById(R.id.btnRoute3);
         pickRoute= (Button) findViewById(R.id.pickRoute);
 
-
+        currentPosition = new MarkerOptions().position(new LatLng(55.71111, 13.210267)).title("Current Location");
 
 
 
