@@ -6,9 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import static com.example.sustaintrain.StepCounter.HIGH_SCORE;
 import static com.example.sustaintrain.StepCounter.PREFS_NAME;
@@ -16,9 +13,6 @@ import static com.example.sustaintrain.StepCounter.PREFS_NAME;
 public class Trophy extends AppCompatActivity {
 
     private ImageButton button;
-    private TextView score;
-    private TextView steps;
-
 
 
     @Override
@@ -32,12 +26,6 @@ public class Trophy extends AppCompatActivity {
                 openHome();
             }
         });
-
-        score = (TextView) findViewById(R.id.HighScore);
-        steps = (TextView) findViewById(R.id.highscoresteps);
-
-        score.setText("Picked up: " + StepCounter.pickedUp);
-        steps.setText("Steps: " + StepCounter.steps);
 
 
     }

@@ -3,6 +3,7 @@ package com.example.sustaintrain;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -41,6 +42,9 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
     private MediaPlayer mp;
     private boolean isScreenOn;
     private Vibrator vib;
+    public static final String PREFS_NAME = "PickedUp";
+    public static final String HIGH_SCORE = "HighScore";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +67,7 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
         pickedUp = 0;
         valueOf = 0;
         steps = 0;
+
 
         
 
